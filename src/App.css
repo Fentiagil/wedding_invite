@@ -1,0 +1,114 @@
+
+/* CSS GLOBAL */
+/* Impor font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playwrite+HR:wght@100..400&display=swap');
+
+.App {
+  text-align: center;
+  color: white;
+}
+
+/* ------------------------------------------------ CSS FLEX COVER ------------------------------------------------ */
+@media (min-width: 320px) {
+  .coverFlex {
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .coverFlex {
+    flex-direction: row;
+  }
+}
+
+/* ------------------------------------------------ CSS COVER LEBAR 2/3 ------------------------------------------------ */
+@media (min-width: 320px) {
+  .cover1 {
+    flex-grow: 0; /* Untuk base */
+    padding: 8px; /* Padding 8px */
+    display: none; /* Untuk base */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .cover1 {
+    flex-grow: 2; /* Untuk md */
+    display: block;
+  }
+
+  .cover1 .title{
+    font-size: 4rem;
+    font-family: "PT Serif", sans-serif;
+  }
+}
+
+.cover1 .animated-text {
+  /* Gaya teks animasi */
+  margin-bottom: 10px;
+}
+
+
+/* ------------------------------------------------ CSS COVER LEBAR 1/3 ------------------------------------------------ */
+@media (min-width: 320px) {
+  .cover2 {
+    flex-grow: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+  }
+
+  .cover2 .name{
+    font-family: "PT Serif", sans-serif;
+    font-size: 2rem;
+    margin-top: 8rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .cover2 {
+    flex-grow: 1; /* Untuk md */
+    display: block;
+    padding: 80px;
+  }
+
+  .cover2 .name{
+    font-size: 2rem;
+  }
+}
+
+/* ------------------------------------------------ CSS ANIMASI ------------------------------------------------ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes move {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+.animated-btn {
+  animation: move 2s infinite;
+}
+
+.animated-text {
+  animation: fadeInUp 1s ease-in-out;
+}
+
