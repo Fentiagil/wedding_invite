@@ -70,7 +70,7 @@
     font-family: "PT Serif", sans-serif;
     font-size: 2rem;
     margin-top: 8rem;
-    margin-bottom: 1rem;
+    
   }
 }
 
@@ -112,3 +112,74 @@
   animation: fadeInUp 1s ease-in-out;
 }
 
+/* ------------------------------------------------ CSS WELCOME PAGE ------------------------------------------------ */
+.circle-button {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fade {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.cover-welcome{
+  animation: fade 5s ease-in-out infinite;
+  transition: background-image 0.5s ease-in-out;
+
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center;    
+  background-repeat: no-repeat;
+  padding: 20px
+}
+
+.cover-welcome .name{
+  font-family: "PT Serif", sans-serif;
+  font-size: 2rem;
+  margin-top: 8rem;
+  
+}
+
+@media (min-width: 768px) {
+  .cover-welcome {
+    flex-grow: 1; /* Untuk md */
+    display: block;
+    padding: 80px;
+  }
+
+  .cover-welcome .name{
+    font-size: 2rem;
+  }
+}
+
+/* ------------------------------------------------ CSS SIDEBAR ------------------------------------------------ */
+.sidebar {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+  text-align: right;
+  padding: 4rem;
+  height: 100vh;
+}
+
+.sidebar-title{
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.coverFlex .sidebar-hidden {
+  transform: translateX(100%);
+}
+
+.sidebar-menu{
+  padding-top: 2rem;
+  padding-bottom: 11rem;
+}

@@ -1,34 +1,39 @@
-import React from 'react';
-import { Box, Flex, Heading, Text, Button, Link } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import './App.css';
 
 function WelcomeSection() {
+  const [backgroundImage, setBackgroundImage] = useState("./assets/foto3.jpeg");
+  const images = ["./assets/foto8.jpeg", "./assets/foto4.jpeg", "./assets/foto5.jpeg", "./assets/foto6.jpeg", "./assets/foto7.jpeg"]; // Tambahkan gambar lainnya sesuai kebutuhan
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setBackgroundImage(prevImage => {
+        const currentIndex = images.indexOf(prevImage);
+        const nextIndex = (currentIndex + 1) % images.length;
+        return images[nextIndex];
+      });
+    }, 5000); // Ganti gambar setiap 5 detik
+
+    return () => clearInterval(intervalId); // Bersihkan interval saat komponen di-unmount
+  }, []);
+
   return (
-    <Flex className='coverFlex' backgroundImage="./assets/foto2.jpeg">
-        
-        {/* Bagian 1 - 2/3 */}
-        <Box className='cover1' backgroundImage="./assets/foto2.jpeg">
-            <Heading fontSize="xl" mb={6} className="animated-text">WEDDING ANNOUNCEMENT</Heading>
-            <Text as='b' fontSize='6xl' mb={4} className="animated-text title">TIFFANY & JARED</Text><br /><br />
-            <Text fontSize='md' as='i' className="animated-text">
-            "Aku ingin mencintaimu dengan sederhana; dengan kata yang tak sempat diucapkan kayu kepada api yang menjadikannya abu. Aku ingin mencintaimu dengan sederhana; dengan isyarat yang tak sempat disampaikan awan kepada hujan yang menjadikannya tiada."
-            </Text><br />
-            <Text fontSize='md' as='i' className="animated-text">— Sapardi Djoko Damono</Text><br />
-        </Box>
-      
-        {/* Bagian 2 - 1/3 */}
-        <Box className='cover2' backgroundImage="./assets/foto3.jpeg" overflowY="auto">
-            <Heading fontSize="xl" mb={4} className="animated-text">WEDDING ANNOUNCEMENT</Heading>
-            <Text as='i' fontSize='2xl' mb={4} className="animated-text name">TIFFANY</Text><br />
-            <Text as='i' fontSize='2xl' mb={4} className="animated-text name">&</Text><br />
-            <Text as='i' fontSize='2xl' mb={4} className="animated-text name">JARED</Text><br /><br />
-            <Text as='i' fontSize='2xl' mb={6} className="animated-text">#TImetoshaRE</Text><br /><br /><br />
-            <Link href="/welcome">
-                <Button colorScheme='gray' className="animated-text">Open</Button>
-            </Link>
-        </Box>
-        
-    </Flex>
+    <>
+      {/* Bagian Welcome*/}
+      <Box 
+        className='cover-welcome' 
+        backgroundImage={`url(${backgroundImage})`} 
+        flex={{ base: '1', md: '1' }} 
+        overflowY="auto"
+        backgroundSize="cover"
+        backgroundPosition="center"
+      >
+        <Heading fontSize="xl" className="animated-text">WEDDING ANNOUNCEMENT</Heading>
+        <Text fontSize='2xl' className="animated-text name">TIFFANY & JARED</Text>
+        <Text as='i' fontSize='2xl' className="animated-text">#TImetoshaRE</Text><br /><br />
+      </Box>
+    </>
   );
 }
 
